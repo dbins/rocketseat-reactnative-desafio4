@@ -1,0 +1,9 @@
+﻿instalar api
+npm install -g json-server
+https://www.npmjs.com/package/json-server
+
+Para iniciar a API
+Teste local
+json-server api.json -p 3001 -w -d 500
+Teste no aparelho (não funciona localhost ou 127.0.0.1)
+json-server api.json  -H 192.168.9.1 -p 3001 -w -d 500
