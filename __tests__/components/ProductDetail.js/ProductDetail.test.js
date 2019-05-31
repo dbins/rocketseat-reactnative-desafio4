@@ -97,7 +97,7 @@ describe("Product Detail Testing", () => {
     const flushAllPromises = () =>
       new Promise(resolve => setImmediate(resolve));
 
-    wrapper.find(TouchableOpacity).simulate("click");
+    wrapper.find(TouchableOpacity).props().onPress();
     //console.log(store);
     //console.log(store.getActions());
     //return flushAllPromises().then(() => {
@@ -105,8 +105,8 @@ describe("Product Detail Testing", () => {
     //    CartActions.addToCart(initialState.products.selectedProduct)
     //  );
     //});
-    //await expect(store.getActions()).toContainEqual(
-    //  CartActions.addToCart(initialState.products.selectedProduct)
-    //);
+    await expect(store.getActions()).toContainEqual(
+      CartActions.addToCart(initialState.products.selectedProduct)
+    );
   });
 });

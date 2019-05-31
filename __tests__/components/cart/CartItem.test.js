@@ -72,29 +72,38 @@ describe("Cart tests", () => {
 
   it("Should be able to Remove from Cart", () => {
     const wrapper = createWrapper();
-    wrapper.find(TouchableOpacity).simulate("click");
-    //expect(store.getActions()).toContainEqual(
-    //  CartActions.removeFromCart(product)
-    //);
+    wrapper
+      .find(TouchableOpacity)
+      .props()
+      .onPress();
+    expect(store.getActions()).toContainEqual(
+      CartActions.removeFromCart(product)
+    );
   });
 
   it("Should be able to update Qty", () => {
     const wrapper = createWrapper();
     expect(wrapper.find("CartItem").state("qty")).toEqual(product.qty);
 
-    wrapper.find(TextInput).simulate("change", "4");
-    //expect(store.getActions()).toContainEqual(
-    //  CartActions.updateQty(4, product)
-    //);
+    wrapper
+      .find(TextInput)
+      .props()
+      .onChangeText("4");
+    expect(store.getActions()).toContainEqual(
+      CartActions.updateQty(4, product)
+    );
   });
 
   it("Should be able to update Qty", () => {
     const wrapper = createWrapper();
     expect(wrapper.find("CartItem").state("qty")).toEqual(product.qty);
 
-    wrapper.find(TextInput).simulate("change", "ZA");
-    //expect(store.getActions()).toContainEqual(
-    //  CartActions.updateQty(0, product)
-    //);
+    wrapper
+      .find(TextInput)
+      .props()
+      .onChangeText("ZA");
+    expect(store.getActions()).toContainEqual(
+      CartActions.updateQty(0, product)
+    );
   });
 });

@@ -144,7 +144,7 @@ describe("Home tests", () => {
     ).toEqual("1");
 
     //DESATIVADO
-    // expect(wrapper.dive().find({ id: 'categoriesList' }).props().renderItem(categories))
+    // expect(wrapper.find('FlatList[id="categoriesList"]').props().renderItem(categories))
     //   .toEqual(<CategoryItems
     //     changeCategory={changeCat}
     //     repo={undefined}
@@ -182,11 +182,13 @@ describe("Home tests", () => {
 
   it("it triggers navigateToProduct", async () => {
     const wrapper = createWrapper();
-
-    //wrapper.instance().navigateToProduct(initialState.products.products[0]);
-    //await expect(store.getActions()).toContainEqual(
-    //  ProductsActions.setSelectedProduct(initialState.products.products[0])
-    //);
-    //expect(navigateFn.calledOnce).toBe(true);
+    wrapper
+      .find("Home")
+      .instance()
+      .navigateToProduct(initialState.products.products[0]);
+    await expect(store.getActions()).toContainEqual(
+      ProductsActions.setSelectedProduct(initialState.products.products[0])
+    );
+    expect(navigateFn.calledOnce).toBe(true);
   });
 });
